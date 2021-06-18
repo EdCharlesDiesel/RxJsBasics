@@ -1,41 +1,33 @@
 import './style.css';
 console.clear();
 
-import { Observable } from 'rxjs';
+import { fromEvent, Observable, of, range, from, interval } from 'rxjs';
 
+
+function hello(){
+    return 'Hello World';
+}
 const observer = {
-    next: value => console.log('next', value),
-    error: error => console.log('error', error),
-    complete: () => console.log('complete!')
+    next:value => console.log('next',value),
+    error:error => console.log('error',error),
+    complete:() => console.log('complete'),
 };
 
-const observable = new Observable(subscriber => {
-    // subscriber.next('Hello');
-    // subscriber.next('World');
-    // //subscriber.complete();
+const source$ = fromEvent(document, 'keyup');
 
-    // subscriber.next('Hello I said');
-    // subscriber.error('There is an error');
-    // subscriber.next('World');
+const sourceOf$ = of(1,2,3,4,5);
 
-    let count= 0;
-    const id = setInterval(() => {
-        subscriber.next(count);
-        //subscriber.complete();
-        count += 1;
-    }, 1000);
+const sourceRange$ = range(1,5);
 
-    return ()=>{
-        console.log('called');
-        clearInterval(id);
-    }
-});
+const sourceArray$ = from([1,2,3,4,5]);
 
-const subscription = observable.subscribe(observer);
-const subscriptionTwo = observable.subscribe(observer);
+const sourceArrayOfString$ = from('khotso');
 
-subscription.add(subscriptionTwo);
+const timer$ = interval(1000);
 
-setInterval(() =>{
-    subscription.unsubscribe();
-},3500);
+// source$.subscribe(observer);
+// sourceOf$.subscribe(observer);
+// sourceArrayOfString$.subscribe(observer);
+// console.log(hello());
+
+timer$.subscribe(console.log);
