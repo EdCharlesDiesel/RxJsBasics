@@ -2,32 +2,102 @@ import './style.css';
 console.clear();
 
 import { fromEvent, Observable, of, range, from, interval } from 'rxjs';
+import { filter, map, reduce, scan, take } from 'rxjs/operators';
 
 
-function hello(){
-    return 'Hello World';
-}
-const observer = {
-    next:value => console.log('next',value),
-    error:error => console.log('error',error),
-    complete:() => console.log('complete'),
-};
+// of(1,2,3,4,5,6).pipe(
+//     filter(value => value>=2)
+// ).subscribe(console.log);
 
-const source$ = fromEvent(document, 'keyup');
+// const keyUp$ = fromEvent(document, 'keyup');
+// const keyCode$ = keyUp$.pipe(
+//     map((event:any) => event.code)
+// );
 
-const sourceOf$ = of(1,2,3,4,5);
+// const enter$ = keyCode$.pipe(
+//     filter(code => code === 'Enter')
+// );
 
-const sourceRange$ = range(1,5);
+// enter$.subscribe(console.log);
 
-const sourceArray$ = from([1,2,3,4,5]);
+// ======================================================-->
+// Progress bar
+// function calculateScrollPercent(element) {
+//   const { scrollTop, scrollHeight, clientHeight } = element;
 
-const sourceArrayOfString$ = from('khotso');
+//   return (scrollTop / (scrollHeight - clientHeight)) * 100;
+// }
 
-const timer$ = interval(1000);
+// // elems
+// const progressBar: any = document.querySelector('.progress-bar');
 
-// source$.subscribe(observer);
-// sourceOf$.subscribe(observer);
-// sourceArrayOfString$.subscribe(observer);
-// console.log(hello());
+// // streams
+// const scroll$ = fromEvent(document, 'scroll');
 
-timer$.subscribe(console.log);
+// const progress$ = scroll$.pipe(
+//   /*
+//    * For every scroll event, we use our helper function to
+//    * map to a current scroll progress value.
+//    */
+//   map(({ target }: any) => calculateScrollPercent(target.scrollingElement))
+// );
+// /*
+//  * We can then take the emitted percent and set the width
+//  * on our progress bar.
+//  */
+// progress$.subscribe(percent => {
+//   progressBar.style.width = `${percent}%`;
+// });
+
+//===================================================
+//Reducer
+
+const numbers = [1, 2, 3, 4, 5]
+const user =[
+  {name: 'Khotso',	loggedIn: false}, {token: null},
+  {name: 'Kagiso',	loggedIn: false}, {token: 'hnn'},
+  {name: 'Nale',	loggedIn: true}, {token: 'kajj'},
+]
+
+// const state$ = from(user).pipe(
+//   scan((accumulator, cur) => {
+//     return{ ...accumulator,...cur;};
+//   }, {})
+// ).subscribe(console.log)
+
+const state$ = from(user).pipe(
+  scan((accumulator, cur) => {
+    return{ ...accumulator,...cur};
+  }, {})
+)
+
+
+// const name$ = state$.pipe(
+//   map(state=>state.name)
+// );
+
+
+//name$.subscribe(console.log);
+
+// const totalReducer = (accumulator, cur) => {
+//   console.log(accumulator, cur);
+//   return accumulator + cur;
+// }
+
+// const total = numbers.reduce(totalReducer, 0);
+
+// from(numbers).pipe(
+//   reduce(totalReducer,0)
+// ).subscribe(console.log);
+// never inter
+// interval(1000).pipe(
+//   take(3),
+//   reduce(totalReducer, 0)
+// ).subscribe({
+//   next: console.log,
+//   complete: () => console.log('complete')
+// });
+
+// from(numbers).pipe(
+//   reduce(totalReducer, 0)
+// ).subscribe(console.log);
