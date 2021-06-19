@@ -17,12 +17,58 @@
     </header>
     <div id="app">
         <h1>Ultimate RxJS</h1>
+        <br />
+        <div class="radio-container">
+            <input type="radio" class="radio-option" name="operator" value="mergeMap">
+            <label for="mergeMap">mergeMap</label>
+        </div>
+        <br />
+        <div class="radio-container">
+            <input type="radio" class="radio-option" name="operator" value="concatMap">
+            <label for="switchMap">switchMap</label>
+        </div>
+        <br />
+        <div class="radio-container">
+            <input type="radio" class="radio-option" name="operator" value="concatMap">
+            <label for="concatMap">concatMap</label>
+        </div>
+        <br />
         <input id="text-input" type="text">
+        <div id="typehead-container"></div>
+        <hr />
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="email">
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="password">pasword</label>
+                <input type="text" id="password" name="password" placeholder="password">
+            </div>
+            <button id="login" class="btn btn-primary">Login</button>
+        </form>
     </div>
 
     <!-- <script src="./filteringOperators.ts"></script> -->
     <!-- <script src="./mergeMap.ts"></script> -->
-    <script src="./switchMap.ts"></script>
+    <!-- <script src="./switchMap.ts"></script> -->
+    <script src="./debounceTime.ts"></script>
+    <!-- <script src="./concatMap.ts"></script> -->
+    <!-- <script src="./exhaustMap.ts"></script> -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+     Optional theme
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    Latest compiled and minified JavaScript
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script> -->
 </body>
 
 
